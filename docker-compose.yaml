@@ -1,0 +1,30 @@
+version: '3'
+services:
+
+  rabbitmq:
+    image: 'rabbitmq:3.9-management'
+    container_name: 'rabbitmq'
+    ports:
+      - '7887:5672'
+      - '7888:15672'
+    expose:
+      - '7887'
+      - '7888'
+
+  postgres-server-api:
+    image: postgres:9.6.24
+    container_name: postgres-server-api
+    restart: always
+    environment:
+      - POSTGRES_DB=crud
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./PostgresDB:/var/lib/postgresql/data
+    expose:
+      - '5432'
+
+volumes:
+  PostgresDB: null

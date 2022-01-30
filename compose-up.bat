@@ -1,0 +1,1 @@
+docker-compose -p dynaccurate-stack -f docker-compose.yaml up -d
