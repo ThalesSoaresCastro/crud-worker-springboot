@@ -31,11 +31,24 @@ public class ClientServiceImpl implements ClientService{
 
     @Override
     public Client update(Client client) {
-        return clientRepository.save(client);
+        return clientRepository.save(client);                            
     }
 
     @Override
     public void deleteById(Long id) {
         clientRepository.deleteById(id);  
     }
+
+    @Override
+    public boolean findClient(Client client){
+        Client aux = clientRepository.findByNameAndDocument(client.getName(), client.getDocument());
+
+        if(aux == null){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
 }

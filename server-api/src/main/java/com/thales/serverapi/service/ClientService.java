@@ -11,4 +11,5 @@ public interface ClientService {
     Optional<Client> findById(Long id);
     Client update(Client client);
     void deleteById(Long id);
+    boolean findClient(Client client);
 }
