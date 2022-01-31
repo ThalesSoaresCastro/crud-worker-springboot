@@ -1,9 +1,9 @@
 package com.thales.serverapi.repository;
 
-import com.thales.serverapi.model.User;
+import com.thales.serverapi.model.Client;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Long>{
+public interface ClientRepository extends JpaRepository<Client, Long>{
     
 }

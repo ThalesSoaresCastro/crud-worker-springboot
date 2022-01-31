@@ -22,8 +22,6 @@ public class Event {
     private Date registration;
     private Date eventRegister;
 
-
-    @ManyToMany(mappedBy = "events")
-    private List<User> users;
-
+    @ManyToMany(mappedBy="events")
+    private List<Client> clients;
 }
