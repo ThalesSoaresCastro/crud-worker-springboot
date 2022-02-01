@@ -1,5 +1,4 @@
 package com.thales.serverapi.repository;
-import java.util.Optional;
 
 import com.thales.serverapi.model.Client;
 

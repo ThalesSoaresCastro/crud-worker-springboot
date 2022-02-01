@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("api/v1/clients")
@@ -121,6 +120,7 @@ public class ClientController {
             return new ResponseEntity(map, HttpStatus.BAD_REQUEST);
         }
         try {
+            clientService.deleteById(id);
             return ResponseEntity.status(HttpStatus.OK).build();
         }catch(Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);

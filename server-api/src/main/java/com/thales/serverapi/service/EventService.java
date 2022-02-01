@@ -3,7 +3,6 @@ package com.thales.serverapi.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.thales.serverapi.model.Client;
 import com.thales.serverapi.model.Event;
 
 public interface EventService {
@@ -12,6 +11,5 @@ public interface EventService {
     Optional<Event> findById(Long id);
     Event update(Event event);
     void deleteById(Long id);
-
-    List<Event> findEventsByClient(Client client);
+    List<Event> findEventsByClient(Long clientId);
 }

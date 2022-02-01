@@ -1,12 +1,9 @@
 package com.thales.serverapi.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -19,6 +16,4 @@ public class Client {
     private String name;
     private String document;
 
-    @OneToMany(mappedBy="client")
-    private List<Event> events;
 }

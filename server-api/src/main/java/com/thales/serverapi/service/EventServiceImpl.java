@@ -3,12 +3,13 @@ package com.thales.serverapi.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.thales.serverapi.model.Client;
 import com.thales.serverapi.model.Event;
 import com.thales.serverapi.repository.EventRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class EventServiceImpl implements EventService{
 
     @Autowired
@@ -40,9 +41,9 @@ public class EventServiceImpl implements EventService{
     }
 
     @Override
-    public List<Event> findEventsByClient(Client client) {
+    public List<Event> findEventsByClient(Long clientId) {
         // TODO Auto-generated method stub
-        return eventRepository.findByClientId(client);
+        return eventRepository.findByClientId(clientId);
     }
     
 }
