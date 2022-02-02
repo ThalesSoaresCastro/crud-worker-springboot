@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
+import com.thales.serverapi.messager.Send;
 import com.thales.serverapi.model.Client;
 import com.thales.serverapi.service.ClientService;
 
@@ -25,6 +26,9 @@ public class ClientController {
     
     @Autowired
     private ClientService clientService;
+
+    @Autowired
+    private Send s;
 
     @GetMapping("/all")
     public ResponseEntity<List<Client>> findAll(){
@@ -71,6 +75,16 @@ public class ClientController {
 
         try {
             Client aux = clientService.save(client);
+            
+            /*
+                Send messager
+            */
+            s.messageSend("ID "+aux.getId() +"/"+
+                        "NICKNAME "+aux.getName()+"/"+
+                        "REGISTRATION DATE "
+            );
+
+
             return ResponseEntity.status(HttpStatus.CREATED).body(aux);
         }catch(Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);

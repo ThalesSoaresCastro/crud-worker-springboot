@@ -1,0 +1,18 @@
+package com.thales.workerapp.configs;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.amqp.core.Queue;
+
+@Configuration
+public class SenderConfig {
+    
+    @Value("${queue.send.message}")
+    private String sendQ;
+    
+    @Bean
+    public Queue queueSend(){
+        return new Queue(sendQ, true);
+    }
+}

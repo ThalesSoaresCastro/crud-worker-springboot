@@ -1,18 +1,15 @@
-package com.thales.serverapi;
+package com.thales.workerapp;
 
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.amqp.rabbit.annotation.EnableRabbit;
-
 
 @EnableRabbit
 @SpringBootApplication
-public class ServerApiApplication {
+public class WorkerappApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ServerApiApplication.class, args);
+		SpringApplication.run(WorkerappApplication.class, args);
 	}
-
-	
 
 }

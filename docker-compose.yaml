@@ -25,6 +25,21 @@ services:
       - ./PostgresDB:/var/lib/postgresql/data
     expose:
       - '5432'
-
+  mongo-worker-app:
+    image: mongo
+    container_name: mongo-worker-app    
+    #restart: unless-stopped
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongo
+      - MONGO_INITDB_ROOT_PASSWORD=mongo
+      - MONGO_INITDB_DATABASE=eventdb
+    volumes:
+      - ./Mongodb:/data/db
+    ports:
+      - 27017:27017
+    expose:
+      - '27017'
 volumes:
   PostgresDB: null
+  Mongodb: null

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
+import com.thales.serverapi.messager.Send;
 import com.thales.serverapi.model.Client;
 import com.thales.serverapi.model.Event;
 import com.thales.serverapi.service.ClientService;
@@ -25,6 +26,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("api/v1/clients")
 public class EventController {
+
+    @Autowired
+    private Send s;
     
     @Autowired
     private EventService eventService;
@@ -83,6 +87,8 @@ public class EventController {
             return new ResponseEntity(map, HttpStatus.BAD_REQUEST);
         }
 
+        //s.messageSend("teste msg");
+
         try {
             //setando o client
             event.setClient(clt.get());
@@ -90,8 +96,16 @@ public class EventController {
             //setando a data atual
             Timestamp actualDate = new Timestamp(System.currentTimeMillis());
             event.setRegistration(actualDate);
+            
+            s.messageSend("ID "+event.getClient().getId() +"/"+" NICKNAME "+
+                        event.getClient().getName()+"/"+
+                        " REGISTRATION DATE "+event.getRegistration() +"/"+
+                        " EVENT TYPE " + event.getType() +"/"+
+                        " DATE CREATED EVENT "+ event.getRegistration()
+                        );
 
             Event evt = eventService.save(event);
+
             return ResponseEntity.status(HttpStatus.CREATED).body(evt);
             
         } catch (Exception e) {
