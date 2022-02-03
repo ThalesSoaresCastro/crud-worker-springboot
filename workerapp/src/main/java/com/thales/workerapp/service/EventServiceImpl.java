@@ -1,5 +1,7 @@
 package com.thales.workerapp.service;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 import com.thales.workerapp.Repository.EventRepository;
@@ -34,9 +36,27 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<Event> findOrderByDateAndClientId(String clientId) {
-        // TODO Auto-generated method stub
         return eventRepository.findByClientId(clientId, Sort.by(Sort.Direction.DESC, "eventRegister"));
     }
+
+    @Override
+    public List<Event> findForDateInterval(String dateI, String dateF) {
+        return eventRepository.findEventForDateInterval(
+                                    Date.from(Instant.parse(dateI)), 
+                                    Date.from(Instant.parse(dateF)));
+    }
+
+    @Override
+    public List<Event> findForDate(String date) {
+
+        String dateIni = date+"T00:00:00.000Z";
+        String dateFin = date+"T23:59:59.999Z";
+
+        return eventRepository.findEventForDateInterval(Date.from(Instant.parse(dateIni)), 
+                                                        Date.from(Instant.parse(dateFin)) );
+    }
+
+    
     
     
 }

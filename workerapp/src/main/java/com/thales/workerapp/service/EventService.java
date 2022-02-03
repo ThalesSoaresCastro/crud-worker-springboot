@@ -11,4 +11,6 @@ public interface EventService {
     List<Event> findAll();
     List<Event> findOrderByDate();
     List<Event> findOrderByDateAndClientId(String clientId);
+    List<Event> findForDateInterval(String dateI, String dateF);
+    List<Event> findForDate(String date);
 }
