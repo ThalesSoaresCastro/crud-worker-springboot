@@ -1,5 +1,6 @@
 package com.thales.serverapi.controller;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -74,6 +75,10 @@ public class ClientController {
         }
 
         try {
+            //Set Actual date
+            Timestamp actualDate = new Timestamp(System.currentTimeMillis());
+            client.setCreatedAt(actualDate);
+
             Client aux = clientService.save(client);
             
             /*
@@ -81,7 +86,7 @@ public class ClientController {
             */
             s.messageSend("ID "+aux.getId() +"/"+
                         "NICKNAME "+aux.getName()+"/"+
-                        "REGISTRATION DATE "
+                        "REGISTRATION DATE "+aux.getCreatedAt()
             );
 
 

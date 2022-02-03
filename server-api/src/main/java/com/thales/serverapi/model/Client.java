@@ -1,5 +1,7 @@
 package com.thales.serverapi.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,5 +17,6 @@ public class Client {
     private Long id;
     private String name;
     private String document;
+    private Date createdAt;
 
 }

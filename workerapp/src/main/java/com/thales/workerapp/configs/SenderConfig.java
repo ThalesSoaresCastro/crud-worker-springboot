@@ -8,11 +8,11 @@ import org.springframework.amqp.core.Queue;
 @Configuration
 public class SenderConfig {
     
-    @Value("${queue.send.message}")
-    private String sendQ;
-    
-    @Bean
-    public Queue queueSend(){
-        return new Queue(sendQ, true);
-    }
+    //@Value("${queue.send.message}")
+    //private String sendQ;
+
+    //@Bean
+    //public Queue queueSend(){
+    //    return new Queue(sendQ, true);
+    //}
 }
