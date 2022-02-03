@@ -16,7 +16,7 @@ public class Event {
     @Id
     private String id;
     private String typeEvent;
-    private String eventRegister;
+    private Date eventRegister;
 
     private String clientId;
 
@@ -24,7 +24,8 @@ public class Event {
         this.typeEvent = typeEvent;
         this.clientId = clientId;
         
-        this.eventRegister = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));;
+        //this.eventRegister = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss"));;
+        this.eventRegister = new Date();
     }
 
 }

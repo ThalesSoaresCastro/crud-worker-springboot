@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.thales.workerapp.model.Event;
 
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Sort;
-
 public interface EventService {
     
     Event save(String typeEvent, String clientId);
